@@ -3,7 +3,7 @@
       <base-card>
         <header>
               <h3>{{ title }}</h3>
-              <Button>Delete</Button>
+              <Button mode="flat">Delete</Button>
           </header>
           <p>{{ description }}</p>
           <a :href="url">View resource</a>
@@ -12,11 +12,7 @@
 </template>
 
 <script>
-import Button from './Button.vue';
 export default {
-  components: {
-    Button
-  },
   props: ['title', 'description', 'url']
 }
 </script>
