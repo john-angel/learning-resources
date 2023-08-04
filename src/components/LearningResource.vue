@@ -1,17 +1,23 @@
 <template>
     <li>
+      <base-card>
         <header>
-            <h3>{{ title }}</h3>
-            <button>Delete</button>
-        </header>        
-        <p>{{ description }}</p>
-        <a :href="url">View resource</a>
+              <h3>{{ title }}</h3>
+              <Button>Delete</Button>
+          </header>
+          <p>{{ description }}</p>
+          <a :href="url">View resource</a>
+      </base-card>      
     </li>
 </template>
 
 <script>
+import Button from './Button.vue';
 export default {
-    props: ['title', 'description', 'url']
+  components: {
+    Button
+  },
+  props: ['title', 'description', 'url']
 }
 </script>
 
