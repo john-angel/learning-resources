@@ -17,27 +17,50 @@
                 <Button>Add resource</Button>
             </div>
         </form>
-    </base-card>    
+    </base-card>
+    <teleport to="body">
+        <modal v-if="invalidInput" title="Error">
+            <template #default>
+                <p>Invalid input</p>
+            </template>
+            <template #actions>
+                <Button @click="tryAgain">Try again</Button>
+            </template>
+        </modal>
+    </teleport>
 </template>
 
 <script>
+import Modal from "./Modal.vue";
+
 export default {
+    components: { Modal },
     inject: ['addResource'],
     data(){
         return {
             title: '',
             description: '',
-            url: ''
+            url: '',
+            invalidInput: false
         }
     },
     methods: {
         submitResource(){
-            const resource = {
-                title: this.title,
-                description: this.description,
-                url: this.url
-            };
-            this.addResource(resource);
+            if(!this.title.length || !this.description.length || !this.url.length){
+                console.log('Invalid input');
+                this.invalidInput = true;
+            }else{
+                this.invalidInput = false;
+                const resource = {
+                    title: this.title,
+                    description: this.description,
+                    url: this.url
+                };
+                this.addResource(resource);
+            }            
+        },
+        tryAgain(){
+            this.invalidInput = false;
         }
     }
 }
