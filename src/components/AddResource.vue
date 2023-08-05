@@ -17,17 +17,15 @@
                 <Button>Add resource</Button>
             </div>
         </form>
-    </base-card>
-    <teleport to="body">
-        <modal v-if="invalidInput" title="Error">
-            <template #default>
-                <p>Invalid input</p>
-            </template>
-            <template #actions>
-                <Button @click="tryAgain">Try again</Button>
-            </template>
-        </modal>
-    </teleport>
+    </base-card>    
+    <modal v-if="invalidInput" title="Error">
+        <template #default>
+            <p>Invalid input</p>
+        </template>
+        <template #actions>
+            <Button @click="tryAgain">Try again</Button>
+        </template>
+    </modal>    
 </template>
 
 <script>
